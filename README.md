@@ -1,4 +1,4 @@
-<img src="https://github.com/Nodysey/FoxHDS/blob/main/public/images/hdslogo_2024.png">
+<img src="https://github.com/Nodysey/FoxHDS/blob/main/public/images/NemoHDS.png">
 <h1>NemoHDS (Fork of FoxHDS, which is itself a fork of WeatherHDS)</h1>
 <img src="https://github.com/Nodysey/FoxHDS/blob/main/public/images/screenshot.png">
 

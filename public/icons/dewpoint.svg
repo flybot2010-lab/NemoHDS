@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Created with Vectornator (http://vectornator.io/) -->
+<svg height="12.0pt" stroke-miterlimit="10" style="fill-rule:nonzero;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;" version="1.1" viewBox="0 0 12 12" width="12.0pt" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:vectornator="http://vectornator.io" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs>
+<linearGradient gradientTransform="matrix(7.34788e-16 12 -12 7.34788e-16 6 0)" gradientUnits="userSpaceOnUse" id="LinearGradient" x1="0" x2="1" y1="0" y2="0">
+<stop offset="0" stop-color="#f29040"/>
+<stop offset="0.7482" stop-color="#ee693c"/>
+<stop offset="1" stop-color="#cd3a27"/>
+</linearGradient>
+</defs>
+<g id="Untitled" vectornator:layerName="Untitled">
+<clipPath clip-rule="nonzero" id="ClipPath">
+<path d="M4.5 12C2.01562 12 0 9.98438 0 7.5C0 5.3625 3.05156 1.35234 3.90469 0.274219C4.04531 0.0984375 4.25391 0 4.47891 0L4.52109 0C4.74609 0 4.95469 0.0984375 5.09531 0.274219C5.94844 1.35234 9 5.3625 9 7.5C9 9.98438 6.98438 12 4.5 12ZM10.875 2.625C10.875 2.21079 10.5392 1.875 10.125 1.875C9.71079 1.875 9.375 2.21079 9.375 2.625C9.375 3.03921 9.71079 3.375 10.125 3.375C10.5392 3.375 10.875 3.03921 10.875 2.625ZM8.25 2.625C8.25 1.58947 9.08947 0.75 10.125 0.75C11.1605 0.75 12 1.58947 12 2.625C12 3.66053 11.1605 4.5 10.125 4.5C9.08947 4.5 8.25 3.66053 8.25 2.625Z"/>
+</clipPath>
+<g clip-path="url(#ClipPath)">
+<path d="M12 0L12 12L0 12L0 0L12 0Z" fill="url(#LinearGradient)" fill-rule="nonzero" opacity="1" stroke="none" vectornator:layerName="Rectangle 1"/>
+</g>
+</g>
+</svg>

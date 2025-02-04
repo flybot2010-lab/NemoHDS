@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Created with Vectornator (http://vectornator.io/) -->
+<svg height="10.5pt" stroke-miterlimit="10" style="fill-rule:nonzero;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;" version="1.1" viewBox="0 0 13.5012 10.5" width="13.501171874999727pt" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:vectornator="http://vectornator.io" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs>
+<linearGradient gradientTransform="matrix(6.4294e-16 10.5 -13.5018 8.26744e-16 6.75088 0)" gradientUnits="userSpaceOnUse" id="LinearGradient" x1="0" x2="1" y1="0" y2="0">
+<stop offset="0" stop-color="#f29040"/>
+<stop offset="0.7482" stop-color="#ee693c"/>
+<stop offset="1" stop-color="#cd3a27"/>
+</linearGradient>
+</defs>
+<clipPath id="ArtboardFrame">
+<rect height="10.5" width="13.5012" x="0" y="0"/>
+</clipPath>
+<g clip-path="url(#ArtboardFrame)" id="Untitled" vectornator:layerName="Untitled">
+<clipPath clip-rule="nonzero" id="ClipPath">
+<path d="M0.75 1.5L12.75 1.5C13.1648 1.5 13.5 1.16484 13.5 0.75C13.5 0.335156 13.1648 0 12.75 0L0.75 0C0.335156 0-1.77636e-15 0.335156-1.77636e-15 0.75C-1.77636e-15 1.16484 0.335156 1.5 0.75 1.5ZM0.220312 4.72031C-0.0726563 5.01328-0.0726563 5.48906 0.220312 5.78203C0.513281 6.075 0.989062 6.075 1.28203 5.78203L2.25 4.81172L2.25 9.75C2.25 10.1648 2.58516 10.5 3 10.5C3.41484 10.5 3.75 10.1648 3.75 9.75L3.75 4.81172L4.72031 5.78203C5.01328 6.075 5.48906 6.075 5.78203 5.78203C6.075 5.48906 6.075 5.01328 5.78203 4.72031L3.53203 2.47031C3.23906 2.17734 2.76328 2.17734 2.47031 2.47031C2.47031 2.47031 0.220312 4.72031 0.220312 4.72031ZM7.72031 5.78203C8.01328 6.075 8.48906 6.075 8.78203 5.78203L9.75 4.81172L9.75 9.75C9.75 10.1648 10.0852 10.5 10.5 10.5C10.9148 10.5 11.25 10.1648 11.25 9.75L11.25 4.81172L12.2203 5.78203C12.5133 6.075 12.9891 6.075 13.282 5.78203C13.575 5.48906 13.575 5.01328 13.282 4.72031L11.032 2.47031C10.7391 2.17734 10.2633 2.17734 9.97031 2.47031L7.72031 4.72031C7.42734 5.01328 7.42734 5.48906 7.72031 5.78203Z"/>
+</clipPath>
+<g clip-path="url(#ClipPath)">
+<path d="M13.5018 0L13.5018 10.5L0 10.5L0 0L13.5018 0Z" fill="url(#LinearGradient)" fill-rule="nonzero" opacity="1" stroke="none" vectornator:layerName="Rectangle 1"/>
+</g>
+</g>
+</svg>

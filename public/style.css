@@ -794,7 +794,7 @@ hr {
   margin-right: 10px;
   text-wrap: nowrap;
   white-space: nowrap;
-  font-weight: 350;
+  font-weight: 400;
 }
 .ldltext-primarybutsmaller {
   font-size: 10pt;
@@ -802,11 +802,11 @@ hr {
   margin-right: 10px;
   text-wrap: nowrap;
   white-space: nowrap;
-  font-weight: 350;
+  font-weight: 400;
 }
 .ldltext-secondary {
   font-size: 12pt;
-  font-weight: 350;
+  font-weight: 400;
   align-self: center;
   margin-right: 5px;
 }
@@ -860,7 +860,7 @@ hr {
 
 #timeLDL {
   font-size: 12pt;
-  font-weight: 350;
+  font-weight: 400;
   font-family: 'Roboto Condensed';
   height: 100%;
 }
@@ -904,7 +904,7 @@ hr {
 
 #ldl-current-wind-value {
   font-size: 12pt;
-  font-weight: 350;
+  font-weight: 400;
   width: 100%;
   text-align: center;
 }
@@ -935,7 +935,7 @@ hr {
 }
 
 .module-value {
-  font-weight: 350;
+  font-weight: 400;
   display: flex;
   align-self: center;
 }
@@ -1112,7 +1112,7 @@ hr {
 
 #ldl-location-label {
   font-size: 12pt !important;
-  font-weight: 350 !important;
+  font-weight: 400 !important;
   text-align: center !important;
   /*width: 100% !important;*/
   margin: 0 !important;
@@ -1157,7 +1157,7 @@ hr {
 
 #cc-label {
   font-size: 12pt !important;
-  font-weight: 350;
+  font-weight: 400;
   color: #ffffff80;
 }
 
@@ -1166,7 +1166,7 @@ hr {
 }
 
 sb {
-  font-weight: 350;
+  font-weight: 400;
   /*margin-left: 4px;*/
   color: #57B5D9;
 }

@@ -26,6 +26,9 @@ const serverConfig = {
     ],
   },
 
+  // National LDL Locations:
+  // ['Albuquerque, NM','Atlanta','Baltimore','Bangor, ME','Billings, MT','Birmingham, AL','Bismarck, ND','Boise, ID','Boston','Buffalo, NY','Burlington, VT','Charlotte, NC','Chicago','Cincinnati','Cleveland','Dallas - Ft. Worth','Denver','Des Moines, IA','Detroit','Flagstaff, AZ','Greenville, SC','Hartford, CT','Houston','Indianapolis','Jacksonville, FL','Kansas City, MO','Las Vegas','Littlerock, AR','Los Angeles','Louisville, KY','Memphis, TN','Miami','Milwaukee','Minneapolis','Nashville, TN','New Orleans','New York City','Newark, NJ','Norfolk, VA','Oklahoma City','Omaha, NE','Orlando, FL','Philadelphia','Phoenix','Pittsburgh','Portland, ME','Portland, OR','Raleigh, NC','Rapid City, SD','Reno, NV','Sacramento, CA','Salt Lake City','San Antonio','San Diego','San Francisco','Seattle','Spokane, WA','St. Louis','Tampa, FL','Tulsa, OK','Washington, DC'],
+
   "seasons": {
     "winter": true,
     "spring": true
@@ -40,6 +43,7 @@ async function getWeather(lat, lon, countryCode) { // credit to Dalk
   // its like 1 am and im way too lazy to think of that better approach
   const currentUrl = await fetch(`https://api.weather.com/v3/wx/observations/current?geocode=${lat},${lon}&units=${serverConfig.units}&language=en-US&format=json&apiKey=${serverConfig.twcApiKey}`);
   const weeklyUrl = await fetch(`https://api.weather.com/v3/wx/forecast/daily/7day?geocode=${lat},${lon}&format=json&units=${serverConfig.units}&language=en-US&apiKey=${serverConfig.twcApiKey}`);
+  const hourlyUrl = await fetch(`https://api.weather.com/v3/wx/forecast/hourly/2day?geocode=${lat},${lon}&format=json&units=${serverConfig.units}&language=en-US&apiKey=${serverConfig.twcApiKey}`)
   const alertsUrl = await fetch(`https://api.weather.com/v3/alerts/headlines?geocode=${lat},${lon}&format=json&language=en-US&apiKey=${serverConfig.twcApiKey}`);
   const radarUrl = await fetch(`https://api.weather.com/v2/maps/dynamic?geocode=${lat.toFixed(1)}0,${lon.toFixed(1)}0&h=320&w=568&lod=8&product=twcRadarHcMosaic&map=dark&language=en-US&format=png&apiKey=${serverConfig.twcApiKey}&a=0`)
   const aqiUrl = await fetch(`https://api.weather.com/v3/wx/globalAirQuality?geocode=${lat},${lon}&language=en-US&scale=EPA&format=json&apiKey=${serverConfig.twcApiKey}`);
@@ -168,11 +172,13 @@ async function loadAllCities() {
 
 async function getLDLWeather(lat, lon, countryCode) { // credit to Dalk for the twc api stuff
   const ldlCurrentUrl = await fetch(`https://api.weather.com/v3/wx/observations/current?geocode=${lat},${lon}&units=${serverConfig.units}&language=en-US&format=json&apiKey=${serverConfig.twcApiKey}`);
+  const ldlHourlyUrl = await fetch(`https://api.weather.com/v3/wx/forecast/hourly/2day?geocode=${lat},${lon}&format=json&units=${serverConfig.units}&language=en-US&apiKey=${serverConfig.twcApiKey}`);
   const ldlWeeklyUrl = await fetch(`https://api.weather.com/v3/wx/forecast/daily/7day?geocode=${lat},${lon}&format=json&units=${serverConfig.units}&language=en-US&apiKey=${serverConfig.twcApiKey}`);
   const ldlAlertsUrl = await fetch(`https://api.weather.com/v3/alerts/headlines?countryCode=${countryCode}&format=json&language=en-US&apiKey=${serverConfig.twcApiKey}`);
   const ldlAqiUrl = await fetch(`https://api.weather.com/v3/wx/globalAirQuality?geocode=${lat},${lon}&language=en-US&scale=EPA&format=json&apiKey=${serverConfig.twcApiKey}`);
   const ldlAlmanacUrl = await fetch(`https://api.weather.com/v3/wx/almanac/monthly/1month?geocode=${lat},${lon}&format=json&units=${serverConfig.units}&month=1&apiKey=${serverConfig.twcApiKey}`)
   const ldlCurrent = await ldlCurrentUrl.json();
+  const ldlHourly = await ldlHourlyUrl.json();
   const ldlWeekly = await ldlWeeklyUrl.json();
   const ldlAlerts = await ldlAlertsUrl.json();
   const ldlAqi = await ldlAqiUrl.json();
@@ -181,6 +187,7 @@ async function getLDLWeather(lat, lon, countryCode) { // credit to Dalk for the 
 
   return {
       ldlCurrent: ldlCurrent,
+      ldlHourly: ldlHourly,
       ldlWeekly: ldlWeekly,
       ldlAlerts: ldlAlerts,
       ldlAqi: ldlAqi,
@@ -229,6 +236,7 @@ for (const location of serverConfig.locationIndex.ldlLocations) {
 
     ldlWeather[location][currentLDLCity].current = weather.ldlCurrent
     ldlWeather[location][currentLDLCity].alerts = weather.ldlAlerts
+    ldlWeather[location][currentLDLCity].hourly = weather.ldlHourly
     ldlWeather[location][currentLDLCity].forecast = weather.ldlWeekly
     ldlWeather[location][currentLDLCity].aqi = weather.ldlAqi
     ldlWeather[location][currentLDLCity].almanac = weather.ldlAlmanac

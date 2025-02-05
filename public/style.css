@@ -824,6 +824,12 @@ hr {
   width: 100%;
 }
 
+#ldl-hourly {
+  position: relative;
+  display: none;
+  width: 100%;
+}
+
 #ldl-extended {
   position: relative;
   display: none;
@@ -972,43 +978,43 @@ hr {
 .ldl-day {
   position: relative;
   display: flex;
+  width: 25%;
 }
 
-#ldl-extended-day0-container {
-  width: 100%;
+/* HOURLY */
+.ldl-hourly-day {
+  display: flex;
+  width: 0%;
+  flex: 1;
 }
 
-#ldl-extended-day1-container {
-  width: 100%;
-}
-
-#ldl-extended-day2-container {
-  width: 100%;
+.ldl-hourly-day-cond {
+  align-self: center;
 }
 
 /* ANIMATIONS */
 @keyframes slideIn {
   0% {
-      transform: translateX(-300%);
+      transform: translateY(-100%);
   }
   100% {
-      transform: translateX(0%);
+      transform: translateY(0%);
   }
 }
 
 @keyframes slideOut {
   0% {
-      transform: translateX(0%);
+      transform: translateY(0%);
   }
   100% {
       
-      transform: translateX(-300%);
+      transform: translateY(100%);
   }
 }
 
 @keyframes switchModules {
   0% {
-      transform: translateY(-300%);
+      transform: translateY(-100%);
   }
   100% {
       transform: translateY(0%);

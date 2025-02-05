@@ -4,8 +4,9 @@ import { locationsList } from './dataLoader.js';
 
 const ldlPresentationSlides = {
     "0": { htmlID: "ldl-current", durationMS: "20000" },
-    "1": { htmlID: "ldl-forecast", durationMS: "15000" },
-    "2": { htmlID: "ldl-extended", durationMS: "10000" },
+    "1": { htmlID: "ldl-hourly", durationMS: "20000" },
+    "2": { htmlID: "ldl-forecast", durationMS: "15000" },
+    "3": { htmlID: "ldl-extended", durationMS: "10000" },
 }
 
 let totalDuration = 0;
@@ -89,7 +90,7 @@ async function LDLData() {
 
         
                 currentTemp.innerHTML = `${latestData.current.temperature}°`
-                currentCondition.innerHTML = latestData.current.wxPhraseMedium
+                currentCondition.innerHTML = latestData.current.wxPhraseLong
                 currentWind.innerHTML = `Wind ${latestData.current.windDirectionCardinal} ${latestData.current.windSpeed}${endingWind}`
                 currentHumidity.innerHTML = `Humidity ${latestData.current.relativeHumidity}%`
                 /* currentDewpoint.innerHTML = ` Dew Point ${latestData.current.temperatureDewPoint}${endingTemp}`
@@ -126,7 +127,7 @@ async function LDLData() {
                 const forecast1Precip = document.getElementById('ldl-forecast-day1-pop-value');
     
                 forecast0Name.innerHTML = latestData.forecast.daypart[0].daypartName[0] ?? latestData.forecast.daypart[0].daypartName[1]
-                forecast0Cond.innerHTML = latestData.forecast.daypart[0].wxPhraseShort[0] ?? latestData.forecast.daypart[0].wxPhraseShort[1]
+                forecast0Cond.innerHTML = latestData.forecast.daypart[0].wxPhraseLong[0] ?? latestData.forecast.daypart[0].wxPhraseLong[1]
                 forecast0Temp.innerHTML = `${latestData.forecast.daypart[0].temperature[0] ?? latestData.forecast.daypart[0].temperature[1]}°`
                 forecast0Precip.innerHTML = `${latestData.forecast.daypart[0].precipChance[0] ?? latestData.forecast.daypart[0].precipChance[1]}%`
     
@@ -137,7 +138,7 @@ async function LDLData() {
 
                 if (latestData.forecast.daypart[0].daypartName[0] === null) {
                     forecast1Name.innerHTML = latestData.forecast.daypart[0].daypartName[2]
-                    forecast1Cond.innerHTML = latestData.forecast.daypart[0].wxPhraseShort[2]
+                    forecast1Cond.innerHTML = latestData.forecast.daypart[0].wxPhraseLong[2]
                     forecast1Temp.innerHTML = `${latestData.forecast.daypart[0].temperature[2]}°`
                     forecast1Precip.innerHTML = `${latestData.forecast.daypart[0].precipChance[2]}%`    
     
@@ -147,7 +148,7 @@ async function LDLData() {
                     forecast1Icon.src = `/graphics/${iconDir}/${iconPath}`
                 } else {
                     forecast1Name.innerHTML = latestData.forecast.daypart[0].daypartName[1]
-                    forecast1Cond.innerHTML = latestData.forecast.daypart[0].wxPhraseShort[1]
+                    forecast1Cond.innerHTML = latestData.forecast.daypart[0].wxPhraseLong[1]
                     forecast1Temp.innerHTML = `${latestData.forecast.daypart[0].temperature[1]}°`
                     forecast1Precip.innerHTML = `${latestData.forecast.daypart[0].precipChance[1]}%`    
     
@@ -158,6 +159,68 @@ async function LDLData() {
                 }
     
     
+              }
+
+              function appendHourly() {
+                const hourly0Name = document.getElementById('ldl-hourly-day0-name');
+                const hourly0Icon = document.getElementById('ldl-day0-icon');
+                const hourly0Temp = document.getElementById('ldl-hourly-day0-temp');
+                const hourly1Name = document.getElementById('ldl-hourly-day1-name');
+                const hourly1Icon = document.getElementById('ldl-day1-icon');
+                const hourly1Temp = document.getElementById('ldl-hourly-day1-temp');
+                const hourly2Name = document.getElementById('ldl-hourly-day2-name');
+                const hourly2Icon = document.getElementById('ldl-day2-icon');
+                const hourly2Temp = document.getElementById('ldl-hourly-day2-temp');
+                const hourly3Name = document.getElementById('ldl-hourly-day3-name');
+                const hourly3Icon = document.getElementById('ldl-day3-icon');
+                const hourly3Temp = document.getElementById('ldl-hourly-day3-temp');
+                const hourly4Name = document.getElementById('ldl-hourly-day4-name');
+                const hourly4Icon = document.getElementById('ldl-day4-icon');
+                const hourly4Temp = document.getElementById('ldl-hourly-day4-temp');
+                const hourly5Name = document.getElementById('ldl-hourly-day5-name');
+                const hourly5Icon = document.getElementById('ldl-day5-icon');
+                const hourly5Temp = document.getElementById('ldl-hourly-day5-temp');
+                const hourly6Name = document.getElementById('ldl-hourly-day6-name');
+                const hourly6Icon = document.getElementById('ldl-day6-icon');
+                const hourly6Temp = document.getElementById('ldl-hourly-day6-temp');
+                const hourly7Name = document.getElementById('ldl-hourly-day7-name');
+                const hourly7Icon = document.getElementById('ldl-day7-icon');
+                const hourly7Temp = document.getElementById('ldl-hourly-day7-temp');
+    
+                const now = new Date();
+                const days = ['12a', '1a', '2a', '3a', '4a', '5a', '6a', '7a', '8a', '9a', '10a', '11a', '12p', '1p', '2p', '3p', '4p', '5p', '6p', '7p', '8p', '9p', '10p', '11p'];
+                hourly0Name.innerHTML = days[(now.getHours() + 1) % 24];
+                hourly1Name.innerHTML = days[(now.getHours() + 2) % 24];
+                hourly2Name.innerHTML = days[(now.getHours() + 3) % 24];
+                hourly3Name.innerHTML = days[(now.getHours() + 4) % 24];
+                hourly4Name.innerHTML = days[(now.getHours() + 5) % 24];
+                hourly5Name.innerHTML = days[(now.getHours() + 6) % 24];
+                hourly6Name.innerHTML = days[(now.getHours() + 7) % 24];
+                hourly7Name.innerHTML = days[(now.getHours() + 8) % 24];
+    
+                hourly0Temp.innerHTML = ` ${latestData.hourly.temperature[0]}° ​ <sb>${latestData.hourly.precipChance[0]}%</sb>`
+                hourly1Temp.innerHTML = ` ${latestData.hourly.temperature[1]}° ​ <sb>${latestData.hourly.precipChance[1]}%</sb>`
+                hourly2Temp.innerHTML = ` ${latestData.hourly.temperature[2]}° ​ <sb>${latestData.hourly.precipChance[2]}%</sb>`
+                hourly3Temp.innerHTML = ` ${latestData.hourly.temperature[3]}° ​ <sb>${latestData.hourly.precipChance[3]}%</sb>`
+                hourly4Temp.innerHTML = ` ${latestData.hourly.temperature[4]}° ​ <sb>${latestData.hourly.precipChance[4]}%</sb>`
+                hourly5Temp.innerHTML = ` ${latestData.hourly.temperature[5]}° ​ <sb>${latestData.hourly.precipChance[5]}%</sb>`
+                hourly6Temp.innerHTML = ` ${latestData.hourly.temperature[6]}° ​ <sb>${latestData.hourly.precipChance[6]}%</sb>`
+                hourly7Temp.innerHTML = ` ${latestData.hourly.temperature[7]}° ​ <sb>${latestData.hourly.precipChance[7]}%</sb>`
+
+                function setHourIcon(day, daypartIndex) {
+                    const iconCode = latestData.hourly.iconCode[daypartIndex];
+                    const dayOrNight = latestData.hourly.dayOrNight[daypartIndex];
+                    const iconPath = weatherIcons[iconCode] ? weatherIcons[iconCode][dayOrNight === "D" ? 0 : 1] : 'not-available.svg';
+                    day.src = `/graphics/${iconDir}/${iconPath}`;
+                }
+                setHourIcon(hourly0Icon, 0);
+                setHourIcon(hourly1Icon, 1);
+                setHourIcon(hourly2Icon, 2);
+                setHourIcon(hourly3Icon, 3);
+                setHourIcon(hourly4Icon, 4);
+                setHourIcon(hourly5Icon, 5);
+                setHourIcon(hourly6Icon, 6);
+                setHourIcon(hourly7Icon, 7);
               }
               
               const forecastData = latestData.weekly;
@@ -172,16 +235,21 @@ async function LDLData() {
                 const extended2Name = document.getElementById('ldl-extended-day2-name');
                 const extended2Icon = document.getElementById('ldl-day2-icon');
                 const extended2Temp = document.getElementById('ldl-extended-day2-temp');
+                const extended3Name = document.getElementById('ldl-extended-day3-name');
+                const extended3Icon = document.getElementById('ldl-day3-icon');
+                const extended3Temp = document.getElementById('ldl-extended-day3-temp');
 
                 const now = new Date();
-                const days = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+                const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
                 extended0Name.innerHTML = days[(now.getDay() + 1) % 7];
                 extended1Name.innerHTML = days[(now.getDay() + 2) % 7];
                 extended2Name.innerHTML = days[(now.getDay() + 3) % 7];
+                extended3Name.innerHTML = days[(now.getDay() + 4) % 7];
     
-                extended0Temp.innerHTML = `${latestData.forecast.daypart[0].temperature[2]}° ​ <sb>${latestData.forecast.daypart[0].temperature[3]}°</sb>`
-                extended1Temp.innerHTML = `${latestData.forecast.daypart[0].temperature[4]}° ​ <sb>${latestData.forecast.daypart[0].temperature[5]}°</sb>`
-                extended2Temp.innerHTML = `${latestData.forecast.daypart[0].temperature[6]}°  <sb>${latestData.forecast.daypart[0].temperature[7]}°</sb>`
+                extended0Temp.innerHTML = ` ${latestData.forecast.daypart[0].temperature[2]}° / <sb>${latestData.forecast.daypart[0].temperature[3]}°</sb>`
+                extended1Temp.innerHTML = ` ${latestData.forecast.daypart[0].temperature[4]}° / <sb>${latestData.forecast.daypart[0].temperature[5]}°</sb>`
+                extended2Temp.innerHTML = ` ${latestData.forecast.daypart[0].temperature[6]}° / <sb>${latestData.forecast.daypart[0].temperature[7]}°</sb>`
+                extended3Temp.innerHTML = ` ${latestData.forecast.daypart[0].temperature[8]}° / <sb>${latestData.forecast.daypart[0].temperature[9]}°</sb>`
     
                 const dayOneIconCode = latestData.forecast.daypart[0].iconCode[0] ?? latestData.forecast.daypart[0].iconCode[1];
                 const dayOrNight = latestData.forecast.daypart[0].dayOrNight[0] ?? latestData.forecast.daypart[0]?.dayOrNight[1];
@@ -197,6 +265,7 @@ async function LDLData() {
                 setDayIcon(extended0Icon, 2);
                 setDayIcon(extended1Icon, 4);
                 setDayIcon(extended2Icon, 6);
+                setDayIcon(extended3Icon, 8);
               }
     
               function appendAirQuality() {
@@ -212,6 +281,7 @@ async function LDLData() {
         
             appendCurrent()
             appendForecast()
+            appendHourly()
             appendExtended()
             appendAirQuality()
             
@@ -242,11 +312,11 @@ async function LDLData() {
   
 function showLocationLabel() {
     locationLabel.style.display = 'block';
-    locationLabel.style.animation = 'slideIn 1s ease-out';
+    locationLabel.style.animation = 'slideIn .5s ease-out';
 }
 
 function hideLocationLabel() {
-    locationLabel.style.animation = 'slideOut 1s ease-out';
+    locationLabel.style.animation = 'slideOut .5s ease-out';
 
     setTimeout(() => {
         locationLabel.style.display = 'none';
@@ -275,6 +345,34 @@ function runCurrentSlide() {
         }, 200);
 
     }, halfDuration - 300);
+}
+
+function runHourlySlide() {
+  const day0 = document.getElementById('ldl-hourly-0-container');
+  const day1 = document.getElementById('ldl-hourly-1-container');
+
+  day0.style.display = 'flex';
+  day1.style.display = 'none';
+
+  const forecastSlide = ldlPresentationSlides[1];
+  const halfDuration = forecastSlide.durationMS / 2;
+
+  setTimeout(() => {
+      day0.style.display = 'none';
+      day1.style.display = 'flex';
+  }, halfDuration);
+
+  setTimeout(() => {
+      day0.style.animation = 'fadeModule 0.2s ease-out';
+
+      setTimeout(() => {
+          day0.style.display = 'none';
+          day0.style.animation = '';
+          day1.style.display = 'flex';
+          day1.style.animation = 'switchModules 0.5s ease-out';
+      }, 100);
+
+  }, halfDuration - 300);
 }
 
 function runForecastSlide() {
@@ -308,7 +406,7 @@ function runForecastSlide() {
 function triggerExitAnimation(slideID) {
     const slideElement = document.getElementById(slideID);
 
-    slideElement.style.animation = 'slideOut 1s ease-out';
+    slideElement.style.animation = 'slideOut .3s ease-out';
 
     setTimeout(() => {
         slideElement.style.display = 'none';
@@ -326,11 +424,15 @@ function showLDLSlide() {
 
     const slideElement = document.getElementById(slide.htmlID)
     slideElement.style.display = 'block';
-    slideElement.style.animation = 'slideIn 1s ease-out';
+    slideElement.style.animation = 'slideIn .3s ease-out';
 
     if (slide.htmlID === 'ldl-current') {
         runCurrentSlide();
     }
+
+    if (slide.htmlID === 'ldl-hourly') {
+      runHourlySlide();
+  }
 
     if (slide.htmlID === 'ldl-forecast') {
         runForecastSlide();

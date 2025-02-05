@@ -32,22 +32,8 @@ function ScaleViewportToTheWindowIGuessLmao() {
         height = 480
 
         viewport.style.width = `854px`
-        ldlContainer.style.bottom = `-3%`
-    } else if (config.videoType === 2) { // NTSC aspect ratio
-        width = 720
-        height = 480
-
-        viewport.style.width = `720px`
-        ldlContainer.style.bottom = `-3%`
-    } else { // 16:10 aspect ratio
-        width = 768
-        height = 480
-
-        viewport.style.width = `768px`
-        ldlContainer.style.bottom = `-3%`
     }
     
-
     const scaleRatioWidth = containerWidth / width;
     const scaleRatioHeight = containerHeight / height;
 

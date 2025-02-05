@@ -170,7 +170,7 @@ function startSlideshow() {
 }
 
 function loadingScreen() {
-    let loadingScreen = true
+    let loadingScreen = false;
 
     switch (loadingScreen) {
         case true:

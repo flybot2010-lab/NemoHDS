@@ -260,7 +260,8 @@ async function runDataInterval() {
   console.log("Ran data and text generation intervals.")
   console.log("============================================")
   console.log(`### Nemo HTML DISPLAY SYSTEM ###`);
-  console.log(`Created by Hainesnoids, SSPWXR, and ScentedOrange`);
+  console.log(`Modified by Hainesnoids`);
+  console.log(`Derivative of WeatherHDS by SSPWXR, ScentedOrange, and LeWolfYT`);
   console.log(`Server is running on http://localhost:${serverConfig.webPort}`);
 }
 

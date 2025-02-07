@@ -3,10 +3,10 @@ import { config, weatherIcons } from "./config.js";
 import { locationsList } from './dataLoader.js';
 
 const ldlPresentationSlides = {
-    "0": { htmlID: "ldl-current", durationMS: "20000" },
-    "1": { htmlID: "ldl-hourly", durationMS: "20000" },
-    "2": { htmlID: "ldl-forecast", durationMS: "15000" },
-    "3": { htmlID: "ldl-extended", durationMS: "10000" },
+    "0": { htmlID: "ldl-current", durationMS: "10000" },
+    "1": { htmlID: "ldl-hourly", durationMS: "30000" }, //30000
+    "2": { htmlID: "ldl-forecast", durationMS: "15000" }, //15000
+    "3": { htmlID: "ldl-extended", durationMS: "10000" }, //10000
 }
 
 let totalDuration = 0;
@@ -60,7 +60,7 @@ async function LDLData() {
           const locationName = locationsList.locationIndex.ldlLocations[ldlLocationIndex];
           const locationData = ldlData[locationName];
 
-          locationLabel.innerHTML = `${locationName}`
+          locationLabel.innerHTML = `${locationName.substring(0,(locationName.length) - 4)}`
   
           if (locationData) {
             const latestKey = Object.keys(locationData)
@@ -80,22 +80,24 @@ async function LDLData() {
                 const currentCondition = document.getElementById('ldl-current-condition');
                 // Wind
                 const currentWind = document.getElementById('ldl-current-wind-value');
+                const currentGusts = document.getElementById('ldl-current-gusts-value');
                 // Extra Products
                 const currentHumidity = document.getElementById('ldl-current-humidity-value');
                 const currentDewpoint = document.getElementById('ldl-current-dewpoint-value');
                 const currentPressure = document.getElementById('ldl-current-pressure-value');
-                const currentVisib = document.getElementById('ldl-current-visibility-value');
-                const currentCeiling = document.getElementById('ldl-current-ceiling-value');
+                //const currentVisib = document.getElementById('ldl-current-visibility-value');
+                //const currentCeiling = document.getElementById('ldl-current-ceiling-value');
                 const currentFeelsLike = document.getElementById('ldl-current-feelslike-value');
 
         
                 currentTemp.innerHTML = `${latestData.current.temperature}°`
                 currentCondition.innerHTML = latestData.current.wxPhraseLong
                 currentWind.innerHTML = `Wind ${latestData.current.windDirectionCardinal} ${latestData.current.windSpeed}${endingWind}`
+                currentGusts.innerHTML = `Gusts ${latestData.current.windGust}${endingWind}`
                 currentHumidity.innerHTML = `Humidity ${latestData.current.relativeHumidity}%`
                 /* currentDewpoint.innerHTML = ` Dew Point ${latestData.current.temperatureDewPoint}${endingTemp}`
                 currentPressure.innerHTML = `Pressure ${latestData.current.pressureAltimeter}${endingPressure}` */
-                currentVisib.innerHTML = `Visibility ${Math.round(latestData.current.visibility)}${endingDistance}`
+                //currentVisib.innerHTML = `Visibility ${Math.round(latestData.current.visibility)}${endingDistance}`
                 currentFeelsLike.innerHTML = `Feels Like ${latestData.current.temperatureFeelsLike}${endingTemp}`
 
                 const iconCode = latestData.current.iconCode;
@@ -103,7 +105,7 @@ async function LDLData() {
                 const iconPath = weatherIcons[iconCode] ? weatherIcons[iconCode][dayOrNight === "D" ? 0 : 1] : 'not-available.svg'
                 currentIcon.src = `/graphics/${iconDir}/${iconPath}`
                 
-                let ceilingFormatted;
+                /*let ceilingFormatted;
     
                 if (latestData.current.cloudCeiling === null) {
                     ceilingFormatted = 'Ceiling Unlimited'
@@ -111,7 +113,7 @@ async function LDLData() {
                     ceilingFormatted = `Ceiling ${latestData.current.cloudCeiling}${endingCeiling}`
                 }
     
-                currentCeiling.innerHTML = ceilingFormatted
+                currentCeiling.innerHTML = ceilingFormatted*/
               }
     
               function appendForecast() {
@@ -174,6 +176,7 @@ async function LDLData() {
                 const hourly3Name = document.getElementById('ldl-hourly-day3-name');
                 const hourly3Icon = document.getElementById('ldl-day3-icon');
                 const hourly3Temp = document.getElementById('ldl-hourly-day3-temp');
+
                 const hourly4Name = document.getElementById('ldl-hourly-day4-name');
                 const hourly4Icon = document.getElementById('ldl-day4-icon');
                 const hourly4Temp = document.getElementById('ldl-hourly-day4-temp');
@@ -186,6 +189,19 @@ async function LDLData() {
                 const hourly7Name = document.getElementById('ldl-hourly-day7-name');
                 const hourly7Icon = document.getElementById('ldl-day7-icon');
                 const hourly7Temp = document.getElementById('ldl-hourly-day7-temp');
+                
+                const hourly8Name = document.getElementById('ldl-hourly-day8-name');
+                const hourly8Icon = document.getElementById('ldl-day8-icon');
+                const hourly8Temp = document.getElementById('ldl-hourly-day8-temp');
+                const hourly9Name = document.getElementById('ldl-hourly-day9-name');
+                const hourly9Icon = document.getElementById('ldl-day9-icon');
+                const hourly9Temp = document.getElementById('ldl-hourly-day9-temp');
+                const hourlyAName = document.getElementById('ldl-hourly-dayA-name');
+                const hourlyAIcon = document.getElementById('ldl-dayA-icon');
+                const hourlyATemp = document.getElementById('ldl-hourly-dayA-temp');
+                const hourlyBName = document.getElementById('ldl-hourly-dayB-name');
+                const hourlyBIcon = document.getElementById('ldl-dayB-icon');
+                const hourlyBTemp = document.getElementById('ldl-hourly-dayB-temp');
     
                 const now = new Date();
                 const days = ['12a', '1a', '2a', '3a', '4a', '5a', '6a', '7a', '8a', '9a', '10a', '11a', '12p', '1p', '2p', '3p', '4p', '5p', '6p', '7p', '8p', '9p', '10p', '11p'];
@@ -197,6 +213,10 @@ async function LDLData() {
                 hourly5Name.innerHTML = days[(now.getHours() + 6) % 24];
                 hourly6Name.innerHTML = days[(now.getHours() + 7) % 24];
                 hourly7Name.innerHTML = days[(now.getHours() + 8) % 24];
+                hourly8Name.innerHTML = days[(now.getHours() + 9) % 24];
+                hourly9Name.innerHTML = days[(now.getHours() + 10) % 24];
+                hourlyAName.innerHTML = days[(now.getHours() + 11) % 24];
+                hourlyBName.innerHTML = days[(now.getHours() + 12) % 24];
     
                 hourly0Temp.innerHTML = ` ${latestData.hourly.temperature[0]}° ​ <sb>${latestData.hourly.precipChance[0]}%</sb>`
                 hourly1Temp.innerHTML = ` ${latestData.hourly.temperature[1]}° ​ <sb>${latestData.hourly.precipChance[1]}%</sb>`
@@ -206,6 +226,10 @@ async function LDLData() {
                 hourly5Temp.innerHTML = ` ${latestData.hourly.temperature[5]}° ​ <sb>${latestData.hourly.precipChance[5]}%</sb>`
                 hourly6Temp.innerHTML = ` ${latestData.hourly.temperature[6]}° ​ <sb>${latestData.hourly.precipChance[6]}%</sb>`
                 hourly7Temp.innerHTML = ` ${latestData.hourly.temperature[7]}° ​ <sb>${latestData.hourly.precipChance[7]}%</sb>`
+                hourly8Temp.innerHTML = ` ${latestData.hourly.temperature[8]}° ​ <sb>${latestData.hourly.precipChance[8]}%</sb>`
+                hourly9Temp.innerHTML = ` ${latestData.hourly.temperature[9]}° ​ <sb>${latestData.hourly.precipChance[9]}%</sb>`
+                hourlyATemp.innerHTML = ` ${latestData.hourly.temperature[10]}° ​ <sb>${latestData.hourly.precipChance[10]}%</sb>`
+                hourlyBTemp.innerHTML = ` ${latestData.hourly.temperature[11]}° ​ <sb>${latestData.hourly.precipChance[11]}%</sb>`
 
                 function setHourIcon(day, daypartIndex) {
                     const iconCode = latestData.hourly.iconCode[daypartIndex];
@@ -221,6 +245,10 @@ async function LDLData() {
                 setHourIcon(hourly5Icon, 5);
                 setHourIcon(hourly6Icon, 6);
                 setHourIcon(hourly7Icon, 7);
+                setHourIcon(hourly8Icon, 8);
+                setHourIcon(hourly9Icon, 9);
+                setHourIcon(hourlyAIcon, 10);
+                setHourIcon(hourlyBIcon, 11);
               }
               
               const forecastData = latestData.weekly;
@@ -312,11 +340,11 @@ async function LDLData() {
   
 function showLocationLabel() {
     locationLabel.style.display = 'block';
-    locationLabel.style.animation = 'slideIn .5s ease-out';
+    locationLabel.style.animation = 'slideIn .5s cubic-bezier(0.37, 0, 0.63, 1)';
 }
 
 function hideLocationLabel() {
-    locationLabel.style.animation = 'slideOut .5s ease-out';
+    locationLabel.style.animation = 'slideOut .5s cubic-bezier(0.37, 0, 0.63, 1)';
 
     setTimeout(() => {
         locationLabel.style.display = 'none';
@@ -335,13 +363,13 @@ function runCurrentSlide() {
     const halfDuration = currentSlide.durationMS / 2;
 
     setTimeout(() => {
-        module1.style.animation = 'fadeModule 0.2s ease-out';
+        module1.style.animation = 'slideOutUp 0.5s cubic-bezier(0.37, 0, 0.63, 1)';
 
         setTimeout(() => {
             module1.style.display = 'none';
             module1.style.animation = '';
             module2.style.display = 'flex';
-            module2.style.animation = 'switchModules 0.5s ease-out';
+            module2.style.animation = 'slideInUp .5s cubic-bezier(0.37, 0, 0.63, 1)';
         }, 200);
 
     }, halfDuration - 300);
@@ -350,27 +378,48 @@ function runCurrentSlide() {
 function runHourlySlide() {
   const day0 = document.getElementById('ldl-hourly-0-container');
   const day1 = document.getElementById('ldl-hourly-1-container');
+  const day2 = document.getElementById('ldl-hourly-2-container');
 
   day0.style.display = 'flex';
   day1.style.display = 'none';
+  day2.style.display = 'none';
 
   const forecastSlide = ldlPresentationSlides[1];
-  const halfDuration = forecastSlide.durationMS / 2;
+  const halfDuration = forecastSlide.durationMS / 3;
 
   setTimeout(() => {
       day0.style.display = 'none';
       day1.style.display = 'flex';
+      day2.style.display = 'none';
   }, halfDuration);
 
   setTimeout(() => {
-      day0.style.animation = 'fadeModule 0.2s ease-out';
+      day0.style.animation = 'slideOutUp 0.5s cubic-bezier(0.37, 0, 0.63, 1)';
 
       setTimeout(() => {
           day0.style.display = 'none';
           day0.style.animation = '';
           day1.style.display = 'flex';
-          day1.style.animation = 'switchModules 0.5s ease-out';
-      }, 100);
+          day1.style.animation = 'slideInUp .5s cubic-bezier(0.37, 0, 0.63, 1)';
+      }, 200);
+
+      setTimeout(() => {
+        day0.style.display = 'none';
+        day1.style.display = 'none';
+        day2.style.display = 'flex';
+      }, halfDuration);
+    
+      setTimeout(() => {
+        day1.style.animation = 'slideOutUp 0.5s cubic-bezier(0.37, 0, 0.63, 1)';
+    
+        setTimeout(() => {
+            day1.style.display = 'none';
+            day1.style.animation = '';
+            day2.style.display = 'flex';
+            day2.style.animation = 'slideInUp .5s cubic-bezier(0.37, 0, 0.63, 1)';
+        }, 200);
+    
+      }, halfDuration - 300);
 
   }, halfDuration - 300);
 }
@@ -382,7 +431,7 @@ function runForecastSlide() {
     day0.style.display = 'flex';
     day1.style.display = 'none';
 
-    const forecastSlide = ldlPresentationSlides[1];
+    const forecastSlide = ldlPresentationSlides[2];
     const halfDuration = forecastSlide.durationMS / 2;
 
     setTimeout(() => {
@@ -391,22 +440,26 @@ function runForecastSlide() {
     }, halfDuration);
 
     setTimeout(() => {
-        day0.style.animation = 'fadeModule 0.2s ease-out';
+        day0.style.animation = 'slideOutUp 0.5s cubic-bezier(0.37, 0, 0.63, 1)';
 
         setTimeout(() => {
             day0.style.display = 'none';
             day0.style.animation = '';
             day1.style.display = 'flex';
-            day1.style.animation = 'switchModules 0.5s ease-out';
-        }, 100);
+            day1.style.animation = 'slideInUp .5s cubic-bezier(0.37, 0, 0.63, 1)';
+        }, 200);
 
     }, halfDuration - 300);
+}
+
+function runExtendedSlide() {
+  document.getElementById('ldl-extended').style.display = 'flex';
 }
 
 function triggerExitAnimation(slideID) {
     const slideElement = document.getElementById(slideID);
 
-    slideElement.style.animation = 'slideOut .3s ease-out';
+    slideElement.style.animation = 'slideOut .3s cubic-bezier(0.37, 0, 0.63, 1)';
 
     setTimeout(() => {
         slideElement.style.display = 'none';
@@ -424,7 +477,7 @@ function showLDLSlide() {
 
     const slideElement = document.getElementById(slide.htmlID)
     slideElement.style.display = 'block';
-    slideElement.style.animation = 'slideIn .3s ease-out';
+    slideElement.style.animation = 'slideIn .3s cubic-bezier(0.37, 0, 0.63, 1)';
 
     if (slide.htmlID === 'ldl-current') {
         runCurrentSlide();
@@ -436,6 +489,10 @@ function showLDLSlide() {
 
     if (slide.htmlID === 'ldl-forecast') {
         runForecastSlide();
+    }
+
+    if (slide.htmlID === 'ldl-extended') {
+      runExtendedSlide();
     }
 
     if (ldlSlideIndex === Object.keys(ldlPresentationSlides).length - 1) {

@@ -359,7 +359,7 @@
             <div class="ldl-container">
                 <div class="ldl-netlogo">
                     <div id="ldl-netlogo-container"></div>
-                    <img class="ldl-logoimg" src="images/logo.png">
+                    <img class="ldl-logoimg" src="images/logoreal.png">
                     <div class="timecont">
                         <div id="dateLDL"></div>
                         <div id="timeLDL"></div>
@@ -369,7 +369,7 @@
                 <div class="ldl-presentation">
                     <div class="ldl-presentation-container">
                         <div id="ldl-current" class="ldl-presentation-slide">
-                            <div class="ldl-slide-container">
+                            <div class="ldl-slide-container ldl-cc">
                                 <div class="ldl-current-cond-temp">
                                     <div class="ldltext-primary" id="cc-label">Now</div>
                                     <img class="ldl-icon" id="ldl-current-icon" src="/graphics/animated/partly-cloudy-day-rain.svg">
@@ -377,36 +377,26 @@
                                     <div class="ldltext-secondary" id="ldl-current-condition">Sunny</div>
                                 </div>
                                 
-                                <div class="ldl-current-wind">
+                                <!--<div class="ldl-current-wind">
                                     <div class="ldltext-primarybutsmaller" id="ldl-current-wind-value">NNW 120 km/h</div>
-                                </div>
+                                </div>-->
     
                                 <div class="ldl-current-module" id="ldl-current-module1">
-                                    <div class="ldl-current-feelslike">
+                                    <div class="ldl-current-feelslike ldl-module-item">
                                         <div class="module-value" id="ldl-current-feelslike-value">1000°F</div>
                                     </div>
-                                    <div class="ldl-current-humidity">
+                                    <div class="ldl-current-humidity ldl-module-item">
                                         <div class="module-value" id="ldl-current-humidity-value">100%</div>
                                     </div>
-                                    <!--
-                                    <div class="ldl-current-pressure">
-                                        <div class="module-value" id="ldl-current-pressure-value">a lot</div>
-                                    </div>
-                                    -->
                                 </div>
     
                                 <div class="ldl-current-module" id="ldl-current-module2">
-                                    <div class="ldl-current-visibility">
-                                        <div class="module-value" id="ldl-current-visibility-value">9999 km</div>
+                                    <div class="ldl-current-wind ldl-module-item">
+                                        <div class="module-value" id="ldl-current-wind-value">Wind SW 999mph</div>
                                     </div>
-                                    <div class="ldl-current-ceiling">
-                                        <div class="module-value" id="ldl-current-ceiling-value">1600</div>
+                                    <div class="ldl-current-gusts ldl-module-item">
+                                        <div class="module-value" id="ldl-current-gusts-value">Gusts 9001mph</div>
                                     </div>
-                                    <!--
-                                    <div class="ldl-current-dewpoint">
-                                        <div class="module-value" id="ldl-current-dewpoint-value">1000°C</div>
-                                    </div>
-                                    -->
                                 </div>
                             </div>
                         </div>
@@ -536,12 +526,55 @@
                                         <div class="ldltext-primary" id="ldl-hourly-day7-temp">12°/17°</div>
                                     </div>
                                 </div>
+
+                                <div class="ldl-hourly-day" id="ldl-hourly-2-container">
+                                    <div class="ldl-day" id="ldl-hourly-day8-container">
+                                        <div class="ldl-hourly-day-cond">
+                                            <div class="ldltext-secondary" id="ldl-hourly-day8-name">Sun</div>
+                                        </div>
+            
+                                        <img class="ldl-icon" id="ldl-day8-icon" src="/graphics/animated/partly-cloudy-day-rain.svg">
+            
+                                        <div class="ldltext-primary" id="ldl-hourly-day8-temp">12°/17°</div>
+                                    </div>
+        
+                                    <div class="ldl-day" id="ldl-hourly-day9-container">
+                                        <div class="ldl-hourly-day-cond">
+                                            <div class="ldltext-secondary" id="ldl-hourly-day9-name">Mon</div>
+                                        </div>
+            
+                                        <img class="ldl-icon" id="ldl-day9-icon" src="/graphics/animated/partly-cloudy-day-rain.svg">
+            
+                                        <div class="ldltext-primary" id="ldl-hourly-day9-temp">12°/17°</div>
+                                    </div>
+    
+                                    <div class="ldl-day" id="ldl-hourly-dayA-container">
+                                        <div class="ldl-hourly-day-cond">
+                                            <div class="ldltext-secondary" id="ldl-hourly-dayA-name">Tue</div>
+                                        </div>
+            
+                                        <img class="ldl-icon" id="ldl-dayA-icon" src="/graphics/animated/partly-cloudy-day-rain.svg">
+            
+                                        <div class="ldltext-primary" id="ldl-hourly-dayA-temp">12°/17°</div>
+                                    </div>
+    
+                                    <div class="ldl-day" id="ldl-hourly-dayB-container">
+                                        <div class="ldl-hourly-day-cond">
+                                            <div class="ldltext-secondary" id="ldl-hourly-dayB-name">Wed</div>
+                                        </div>
+            
+                                        <img class="ldl-icon" id="ldl-dayB-icon" src="/graphics/animated/partly-cloudy-day-rain.svg">
+            
+                                        <div class="ldltext-primary" id="ldl-hourly-dayB-temp">12°/17°</div>
+                                    </div>
+                                </div>
     
                             </div>
                         </div>
 
                         <div id="ldl-extended" class="ldl-presentation-slide">
-                            <div class="ldl-slide-container">
+                            <div class="ldltext-primary ext-label" id="cc-label">Next 4 Days</div>
+                            <div class="ldl-slide-container ldl-extended-container">
                                 <div class="ldl-day" id="ldl-extended-day0-container">
                                     <div class="ldl-extended-day-cond">
                                         <div class="ldltext-secondary" id="ldl-extended-day0-name">Sun</div>

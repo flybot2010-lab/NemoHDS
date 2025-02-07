@@ -4,7 +4,7 @@ const fs = require('fs').promises
 const app = express();
 
 const serverConfig = {
-  "twcApiKey": "", // Your The Weather Channel API Key Here.
+  "twcApiKey": "e1f10a1e78da46f5b10a1e78da96f525", // Your The Weather Channel API Key Here.
   "units": "e", // 'm' for Metric, 'e' for American / Imperial
 
   "webPort": 9001,
@@ -22,7 +22,8 @@ const serverConfig = {
       "Mount Laurel, NJ",
       "Voorhees, NJ",
       "Camden, NJ",
-      "Mount Holly, NJ"
+      "Mount Holly, NJ",
+      "Woodbury, NJ"
     ],
   },
 
@@ -164,9 +165,14 @@ async function loadAllCities() {
       currentCity++
 
     } catch (error) {
-      console.error(`Error processing ${location}: ${error.message}`);
-    }
-     
+      if (serverConfig.twcApiKey == "") {
+        console.error('\x1b[31mError:\x1b[0m try inputting an api key in 𝓈𝑒𝓇𝓋𝑒𝓇.𝒿𝓈 lmao');
+        console.log('');
+        process.exit();
+      } else {
+        console.error(`\x1b[31mError:\x1b[0m Could not process ${location}: ${error.message}`);
+      }
+    }  
   }
 }
 
@@ -246,7 +252,7 @@ for (const location of serverConfig.locationIndex.ldlLocations) {
     currentLDLCity++
 
   } catch (error) {
-    console.error(`Error processing ${location}: ${error.message}`);
+    console.error(`\x1b[31mError:\x1b[0m Could not process ${location}: ${error.message}`);
   }
    
 }

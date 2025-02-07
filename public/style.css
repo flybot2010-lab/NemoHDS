@@ -668,7 +668,7 @@ hr {
 	left: 0%;
 	text-shadow: rgb(0, 0, 0) 1pt 1pt 1pt;
 	bottom: -64%;
-  animation: slidein 2s ease-in-out 1;
+  animation: slidein 2s cubic-bezier(0.65, 0, 0.35, 1) 1;
 }
 .main-alerts-standby-scrolltextdecorative {
   animation: scroll 20s linear infinite;
@@ -730,6 +730,7 @@ hr {
 .ldl-icon {
   height: 100%;
   margin-left: 5%;
+  margin-right: 2%;
 }
 
 .ldl-slide-container {
@@ -834,6 +835,7 @@ hr {
   position: relative;
   display: none;
   width: 100%;
+  flex-direction: row;
 }
 
 #ldl-aqi {
@@ -889,19 +891,13 @@ hr {
   justify-content: space-between;
   align-items: center;
   height: 100%;
-  width: 120%;
+  width: auto;
 }
 
 #ldl-current-condition {
   align-self: center;
   flex-grow: 2;
   margin-left: 5%;
-}
-
-.ldl-current-wind {
-	width: 50%;
-	align-items: center;
-  display: flex;
 }
 
 #ldl-current-wind-label {
@@ -919,15 +915,19 @@ hr {
 
 .ldl-current-module {
   display: flex;
-  justify-content: space-around;
-  margin-left: 5px;
+  justify-content: left;
+  margin-left: 5%;
   line-height: 1;
   font-size: 12pt;
-  width: 100%;
-  flex-grow: 2;
+  width: auto;
+  flex: 1;
   font-weight: 300;
   align-self: center;
   margin-right: 5px;
+}
+
+.ldl-module-item {
+  margin-right: 5%;
 }
 
 .ldl-current-module div, .ldl-current-wind {
@@ -935,17 +935,14 @@ hr {
   flex-direction: row;
 }
 
-#ldl-current-module2 {
-  text-wrap: nowrap;
-  display: flex;
-  flex-grow: 2;
-  font-size: 12pt;
-}
-
 .module-value {
   font-weight: 300;
   display: flex;
   align-self: center;
+}
+
+.ldl-cc {
+  justify-content: left;
 }
 
 
@@ -1012,9 +1009,29 @@ hr {
   }
 }
 
+@keyframes slideOutUp {
+  0% {
+      transform: translateY(0%);
+  }
+  100% {
+      
+      transform: translateY(-125%);
+  }
+}
+
+@keyframes slideInUp {
+  0% {
+      transform: translateY(125%);
+  }
+  100% {
+      
+      transform: translateY(0%);
+  }
+}
+
 @keyframes switchModules {
   0% {
-      transform: translateY(-100%);
+      transform: translateY(-125%);
   }
   100% {
       transform: translateY(0%);
@@ -1119,7 +1136,7 @@ hr {
 }
 
 #ldl-location-label {
-  font-size: 11pt !important;
+  font-size: 12pt !important;
   text-align: center !important;
   /*width: 100% !important;*/
   margin: 0 !important;
@@ -1204,4 +1221,13 @@ sb {
   flex-direction: row;
   justify-content: left;
   margin-left: 5%;
+}
+
+.ldl-extended-container {
+  width: 100%;
+  flex-grow: 1;
+}
+
+.ext-label {
+  width: min-content;
 }

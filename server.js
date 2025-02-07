@@ -4,7 +4,7 @@ const fs = require('fs').promises
 const app = express();
 
 const serverConfig = {
-  "twcApiKey": "", // Your The Weather Channel API Key Here.
+  "twcApiKey": "e1f10a1e78da46f5b10a1e78da96f525", // Your The Weather Channel API Key Here.
   "units": "e", // 'm' for Metric, 'e' for American / Imperial
 
   "webPort": 9001,
@@ -17,7 +17,7 @@ const serverConfig = {
       "Camden NJ",
       "Mount Holly"
     ],
-    "ldlLocations": [
+    "ldlLocations": [ // the last 4 characters of each location name are omitted, if you wanna keep it add 4 spaces to the end of the location name
       "Cherry Hill, NJ",
       "Mount Laurel, NJ",
       "Voorhees, NJ",

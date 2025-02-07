@@ -4,7 +4,7 @@ const fs = require('fs').promises
 const app = express();
 
 const serverConfig = {
-  "twcApiKey": "", // Your The Weather Channel API Key Here.
+  "twcApiKey": "", // Your The Weather Channel API Key Here.  e1f10a1e78da46f5b10a1e78da96f525
   "units": "e", // 'm' for Metric, 'e' for American / Imperial
 
   "webPort": 9001,
@@ -27,8 +27,69 @@ const serverConfig = {
     ],
   },
 
-  // National LDL Locations:
-  // ['Albuquerque, NM','Atlanta','Baltimore','Bangor, ME','Billings, MT','Birmingham, AL','Bismarck, ND','Boise, ID','Boston','Buffalo, NY','Burlington, VT','Charlotte, NC','Chicago','Cincinnati','Cleveland','Dallas - Ft. Worth','Denver','Des Moines, IA','Detroit','Flagstaff, AZ','Greenville, SC','Hartford, CT','Houston','Indianapolis','Jacksonville, FL','Kansas City, MO','Las Vegas','Littlerock, AR','Los Angeles','Louisville, KY','Memphis, TN','Miami','Milwaukee','Minneapolis','Nashville, TN','New Orleans','New York City','Newark, NJ','Norfolk, VA','Oklahoma City','Omaha, NE','Orlando, FL','Philadelphia','Phoenix','Pittsburgh','Portland, ME','Portland, OR','Raleigh, NC','Rapid City, SD','Reno, NV','Sacramento, CA','Salt Lake City','San Antonio','San Diego','San Francisco','Seattle','Spokane, WA','St. Louis','Tampa, FL','Tulsa, OK','Washington, DC'],
+  /* National LDL Locations:
+      'Albuquerque, NM    ',
+      'Atlanta    ',
+      'Baltimore    ',
+      'Bangor, ME    ',
+      'Billings, MT    ',
+      'Birmingham, AL    ',
+      'Bismarck, ND    ',
+      'Boise, ID    ',
+      'Boston    ',
+      'Buffalo, NY    ',
+      'Burlington, VT    ',
+      'Charlotte, NC    ',
+      'Chicago    ',
+      'Cincinnati    ',
+      'Cleveland    ',
+      'Dallas - Ft. Worth    ',
+      'Denver    ',
+      'Des Moines, IA    ',
+      'Detroit    ',
+      'Flagstaff, AZ    ',
+      'Greenville, SC    ',
+      'Hartford, CT    ',
+      'Houston    ',
+      'Indianapolis    ',
+      'Jacksonville, FL    ',
+      'Kansas City, MO    ',
+      'Las Vegas    ',
+      'Littlerock, AR    ',
+      'Los Angeles    ',
+      'Louisville, KY    ',
+      'Memphis, TN    ',
+      'Miami    ',
+      'Milwaukee    ',
+      'Minneapolis    ',
+      'Nashville, TN    ',
+      'New Orleans    ',
+      'New York City    ',
+      'Newark, NJ    ',
+      'Norfolk, VA    ',
+      'Oklahoma City    ',
+      'Omaha, NE    ',
+      'Orlando, FL    ',
+      'Philadelphia    ',
+      'Phoenix    ',
+      'Pittsburgh    ',
+      'Portland, ME    ',
+      'Portland, OR    ',
+      'Raleigh, NC    ',
+      'Rapid City, SD    ',
+      'Reno, NV    ',
+      'Sacramento, CA    ',
+      'Salt Lake City    ',
+      'San Antonio    ',
+      'San Diego    ',
+      'San Francisco    ',
+      'Seattle    ',
+      'Spokane, WA    ',
+      'St. Louis    ',
+      'Tampa, FL    ',
+      'Tulsa, OK    ',
+      'Washington, DC    '
+  */
 
   "seasons": {
     "winter": true,

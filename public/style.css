@@ -898,6 +898,8 @@ hr {
   align-self: center;
   flex-grow: 2;
   margin-left: 5%;
+  width: fit-content;
+  text-wrap: nowrap;
 }
 
 #ldl-current-wind-label {

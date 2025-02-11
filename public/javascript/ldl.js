@@ -93,7 +93,13 @@ async function LDLData() {
                 currentTemp.innerHTML = `${latestData.current.temperature}°`
                 currentCondition.innerHTML = latestData.current.wxPhraseLong
                 currentWind.innerHTML = `Wind ${latestData.current.windDirectionCardinal} ${latestData.current.windSpeed}${endingWind}`
-                currentGusts.innerHTML = `Gusts ${latestData.current.windGust}${endingWind}`
+    
+                if (latestData.current.windGust === null) {
+                  currentGusts.innerHTML = `Gusts None`
+                } else {
+                  currentGusts.innerHTML = `Gusts ${latestData.current.windGust}${endingWind}`
+                }
+
                 currentHumidity.innerHTML = `Humidity ${latestData.current.relativeHumidity}%`
                 /* currentDewpoint.innerHTML = ` Dew Point ${latestData.current.temperatureDewPoint}${endingTemp}`
                 currentPressure.innerHTML = `Pressure ${latestData.current.pressureAltimeter}${endingPressure}` */

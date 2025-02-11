@@ -137,12 +137,12 @@ async function getWeather(lat, lon, countryCode) { // credit to Dalk
         if (alertDetailsUrl.ok) {
           alertDetails = await alertDetailsUrl.json();
         } else {
-          console.error(`Failed to fetch alert details: ${alertDetailsUrl.status} ${alertDetailsUrl.statusText}`);
+          console.error(`\x1b[31mError:\x1b[0m Failed to fetch alert details: ${alertDetailsUrl.status} ${alertDetailsUrl.statusText}`);
         }
       }
     }
   } catch (error) {
-    console.error('Error fetching weather alerts:', error);
+    console.error('\x1b[31mError:\x1b[0m Error fetching weather alerts:', error);
   }
   const radar = radarUrl.url;
   const aqi = await aqiUrl.json();
@@ -178,7 +178,7 @@ async function getWeatherCoordinates(location) {
   const locationData = coordinates.location;
   
   if (!locationData) {
-    throw new Error(`Location data not found for ${location}`);
+    throw new Error(`\x1b[31mError:\x1b[0m Location data not found for ${location}`);
   }
 
   if(serverConfig.debugger) {
@@ -268,7 +268,7 @@ const coordinates = await coordinatesUrl.json();
 const locationData = coordinates.location;
 
 if (!locationData) {
-  throw new Error(`Location data not found for ${location}`);
+  throw new Error(`\x1b[31mError:\x1b[0m Location data not found for ${location}`);
 }
 
 if(serverConfig.debugger) {
@@ -329,15 +329,15 @@ async function saveDataToJson() {
 }
 
 async function runDataInterval() {
-  await loadAllCities()
-  await loadAllLDLCities()
-  saveDataToJson()
-  console.log("Ran data and text generation intervals.")
-  console.log("============================================")
-  console.log(`### Nemo HTML DISPLAY SYSTEM ###`);
-  console.log(`Modified by Hainesnoids`);
-  console.log(`Derivative of WeatherHDS by SSPWXR, ScentedOrange, and LeWolfYT`);
-  console.log(`Server is running on http://localhost:${serverConfig.webPort}`);
+  await loadAllCities();
+  await loadAllLDLCities();
+  saveDataToJson();
+  console.log("Ran data and text generation intervals.");
+  console.log(`=========================`);
+  console.log(`NEMO HTML DISPLAY SYSTEM`);
+  console.log(`NemoHDS is now running on \x1b[34mhttp://localhost:${serverConfig.webPort.toString().padEnd(5," ")}\x1b[0m │▒`);
+  console.log(`NemoHDS by Hainesnoids, a derivative of WeatherHDS by SSPWXR, ScentedOrange, & LeWolfYT`);
+  console.log(`Ctrl + C to quit`);
 }
 
 runDataInterval()

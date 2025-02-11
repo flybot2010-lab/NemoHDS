@@ -1,5 +1,5 @@
 export let config = {
-    "networkName": "Fox Weather",
+    "networkName": "The Weather Channel",
     "affiliateName": "Spark TV",
     "channelNumber": "1004",
     "debugger": false,

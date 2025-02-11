@@ -8,7 +8,9 @@ NemoHDS is a Node.JS app based on WeatherHDS that simplifies the presentation of
 
 ## Installation
 1. Install [Node.JS](https://nodejs.org)
-2. Run `npm start` in the root directory
+2. Open server.js, and input your API key on line 7.
+3. Change the locations to your preferences. Make sure to include the 2-character state code at the end, or else the location name will be cropped.
+3. Run `npm start` in the root directory
 
 # Configuration
 ## Dependencies

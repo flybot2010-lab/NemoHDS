@@ -12,6 +12,7 @@ export let config = {
     "videoType": 1,
     "textureFiltering": true,
     "systemTimeZone": "America/New_York",
+    "crawltext": "silvie the cat is our all knowing god, creator of 2PM food time and owner of the fluff chair",
     "tickerContent": "",
     "overrideBackgroundImage": "",
     "enableBackgrounds": true,
